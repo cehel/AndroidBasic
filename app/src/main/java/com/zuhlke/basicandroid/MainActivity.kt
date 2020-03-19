@@ -1,7 +1,9 @@
 package com.zuhlke.basicandroid
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.zuhlke.basicandroid.CountResultActivity.Companion.COUNT_KEY
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -17,6 +19,13 @@ class MainActivity : AppCompatActivity() {
         buttonCount.setOnClickListener {
             count++
             updateCount()
+        }
+
+        goToResult.setOnClickListener{
+            val intent = Intent(this, CountResultActivity::class.java).apply {
+                putExtra(COUNT_KEY, count)
+            }
+            startActivity(intent)
         }
     }
 
